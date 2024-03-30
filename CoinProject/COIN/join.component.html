@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <div class="container" *ngIf="!flagLogin">
+        <div class="head">
+          <h3>Admin Panel</h3>
+        </div>
+        <div class="secondPart">
+          <form>
+            <div class="formDiv">
+              <div class="inpDiv">
+                <label>Login</label>
+                <input
+                  type="text"
+                  placeholder="Enter Your Fullname"
+                  name="names"
+                  [(ngModel)]="fullName"
+                />
+              </div>
+              <div class="inpDiv">
+                <label>Password</label>
+                <input
+                  type="password"
+                  placeholder="Enter Your Password"
+                  name="psw"
+                  [(ngModel)]="password"
+                />
+              </div>
+              <button type="button" class="btn" (click)="check()">
+                Sign In
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="fullContainer">
+        <div class="sectionJ" *ngIf="flagLogin && newPage">
+          <div class="headJ">
+            <h3>List of the Coin</h3>
+          </div>
+          <div class="formDivJ">
+            <form class="formsJ">
+              <div class="inpDivJ">
+                <label>Input Field</label>
+                <input
+                  type="text"
+                  name="searchedCoin"
+                  [(ngModel)]="searchedCoin"
+                />
+              </div>
+            </form>
+            <div class="btnJ">
+              <button class="searchbtnJ" (click)="findCoin()" type="button">
+                search
+              </button>
+            </div>
+          </div>
+          <div class="containerL" *ngIf="flag">
+            <div class="part1">
+              <div class="coin">
+                <div class="img">
+                  <img
+                    src="https://lh3.googleusercontent.com/ObSK3S2-qj8fdwESIEW2lST21PdxRfPA59mkiIuzw3pbYmCudY1wNgWhAX5qhavxKOBKOSm15GLMwvfGccEh8QtDuNoCMxov0BkaFy_mcepsrmsZp0DpU3zmjPcBirEJorDEvW7FBiAWmiiwCEXZS77WCz-Ei6UxjubzJwSvHFi_faO7uybG3Cg50NjHJHMSXWSh4ErIXruRYdHJgTXlHiYnzrR4CHkEWsZHjC-7AtLP9NXW0EBqaTOu5e9Dwpws6kls0wcgqmAtTgMDoCqTtXxZUtJ75hWaSvZrLmkes8F1-UQ7eYrMeSh8QwKL13EJETg25tY0kFj6WcE2gMXb6m3k2rbljruzqA1mF0wzfr34Ac8H4JV0BIsNHx--esJxZRDOnriveNplEB-3AsKULhrM464rblJxlPMLS08SICNHj-mGYKq7K2dRd7s1FT1TzIeAjGVgNYuQwmMcqjHVRGvcHR6aErenfnzGpbXzNMjoG5FZyQ8nopkyhuwCvqbNbZ4feXB0OQ4odEsB-Avj_wCiVgQGefdFEx7AM5v6kzJ_inyR9un5lDorDiD_Ok4wOG-hlfxP42-LW9oYzTAuMnjuy_2oK8eP62M5VsaQjY4Xr7dSalhlvkyd36hAb-R4DrcXSi-TbQxSdj4K_h6RDDOJWhZXf-r4ya2kDGmSZCSpXgOib2wsmCAkrYQQw8pqwqOyc_Y5hOxXsC6tNN_jLPn-Z0LlcTqsan4efHF2wM4y5VElN3tV_s_Jfe-enF4y7v1Nm1G4XF8y_DHzSWzwgZo0c0VFClwde1ESixdeFil4bjPdU6tHGL6OxtnOfhs6JKg2VDkLYht8D86crKWgPAOC9GbpXADJXWWJ1vyiOCcrQ2FALNofRF70lJAlJYiILAnlROhmOmofkTPtRpurQCgpqkOMGZVNSbEwoopvE4yT=s192-no?authuser=0"
+                    alt="sdfs"
+                  />
+                </div>
+                <div class="data">
+                  <h3>{{ newData[0].namess }}</h3>
+                  <p>{{ newData[0].short }}</p>
+                </div>
+              </div>
+              <div class="coin">
+                <div class="img">
+                  <img
+                  src="https://lh3.googleusercontent.com/TAtkP7NjDx1onGdQXVRTCwtxbMBFKX_kTXDbeqoTzGZ0qBvm2Md3NmLGdlqg_pPJkFjZZ-Tx9nB_pDwO7r1ss7THiRxS_W40O92LDnRu8zfmBUN5KLXEgWxthKGysua4_Vrmt8H9G43jGy43U0gWfyf72Hg4tK30AUbMH8f04QfZ7LDHxxZwofn3qs5gTKo1aF_uQlqNNnde255ghkxdYaI9hS_onbpPsZvd6YWLceQb3zmgLKVWCZ7l2j2z6BkqvaXistSL3MyNZEitIt7GvChki6Tmup_Tt-ZJj2p5qf-Z6Cksyk4RFPSrTTMyIYY5-aDfoZSN0fvMGBxtcffdC_pv-Q_jCOxiq6HUWYBKQlan9xLH4EcMlzoBVWBd-a0IaWAAaM9IWAIokJBj6CmggF37Cj79qtEZc6kh8FTxTAINmWfEUKS0SQfXN1N14IGiVSVBFueD3gJ9Zx0IHq3d-272lrYMPpFdaTViGNDOeS3nVNxh3s7hEEa8UA1GDnVahDN9KMZyFfdVBDtag6Cqi44n3h9CA9-j9oVXXeBUbCG51cxTf24UQYoHVJZt8o3dc2SfJ_jhfxQ1gi78mHYwFDBDvuvAsRbf1b6_EJx_cFxCksjEDZSzKRd26yliGsdTcTMb2dhpnwnQwrAe-mdyPR2v30MlKm4OV2cpEB2AaYHj0gSCYQkvJgqfYwXqNGVUeVo2_1_RFHYuN9Sk0YQAG3cbVs0F13u_m_fyt4hIDDAwBQHoesifvQXDIsf6l8KWsQPljnIOvqWvzhXaz7a13IqeI7eEwCo3TlcXzbqWgxMuUExzn5htWNu9RfmAhvQsgj84qF3KxVxFIxJEa4HTJ0AmD8kzK2FWh8GKSpHC0bIaHYmxVKIU5FEptZ1fOQE8m1aE00uj2eAB8B6wuYhKsZYbOzKowJ-g_RyE4QgRT4Cl=s638-no?authuser=0"
+                    alt="llkk"
+                  />
+                </div>
+                <div class="data">
+                  <h3>{{ newData[1].namess }}</h3>
+                  <p>{{ newData[1].short }}</p>
+                </div>
+              </div>
+              <div class="coin">
+                <div class="img">
+                  <img
+                    src="https://lh3.googleusercontent.com/TAtkP7NjDx1onGdQXVRTCwtxbMBFKX_kTXDbeqoTzGZ0qBvm2Md3NmLGdlqg_pPJkFjZZ-Tx9nB_pDwO7r1ss7THiRxS_W40O92LDnRu8zfmBUN5KLXEgWxthKGysua4_Vrmt8H9G43jGy43U0gWfyf72Hg4tK30AUbMH8f04QfZ7LDHxxZwofn3qs5gTKo1aF_uQlqNNnde255ghkxdYaI9hS_onbpPsZvd6YWLceQb3zmgLKVWCZ7l2j2z6BkqvaXistSL3MyNZEitIt7GvChki6Tmup_Tt-ZJj2p5qf-Z6Cksyk4RFPSrTTMyIYY5-aDfoZSN0fvMGBxtcffdC_pv-Q_jCOxiq6HUWYBKQlan9xLH4EcMlzoBVWBd-a0IaWAAaM9IWAIokJBj6CmggF37Cj79qtEZc6kh8FTxTAINmWfEUKS0SQfXN1N14IGiVSVBFueD3gJ9Zx0IHq3d-272lrYMPpFdaTViGNDOeS3nVNxh3s7hEEa8UA1GDnVahDN9KMZyFfdVBDtag6Cqi44n3h9CA9-j9oVXXeBUbCG51cxTf24UQYoHVJZt8o3dc2SfJ_jhfxQ1gi78mHYwFDBDvuvAsRbf1b6_EJx_cFxCksjEDZSzKRd26yliGsdTcTMb2dhpnwnQwrAe-mdyPR2v30MlKm4OV2cpEB2AaYHj0gSCYQkvJgqfYwXqNGVUeVo2_1_RFHYuN9Sk0YQAG3cbVs0F13u_m_fyt4hIDDAwBQHoesifvQXDIsf6l8KWsQPljnIOvqWvzhXaz7a13IqeI7eEwCo3TlcXzbqWgxMuUExzn5htWNu9RfmAhvQsgj84qF3KxVxFIxJEa4HTJ0AmD8kzK2FWh8GKSpHC0bIaHYmxVKIU5FEptZ1fOQE8m1aE00uj2eAB8B6wuYhKsZYbOzKowJ-g_RyE4QgRT4Cl=s638-no?authuser=0"
+                    alt="xvxvc"
+                  />
+                </div>
+                <div class="data">
+                  <h3>{{ newData[2].namess }}</h3>
+                  <p>{{ newData[2].short }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="part2">
+              <div class="coin">
+                <div class="img"></div>
+                <div class="data">
+                  <h3>{{ newData[3].namess }}</h3>
+                  <p>{{ newData[3].short }}</p>
+                </div>
+              </div>
+              <div class="coin">
+                <div class="img"></div>
+                <div class="data">
+                  <h3>{{ newData[4].namess }}</h3>
+                  <p>{{ newData[4].short }}</p>
+                </div>
+              </div>
+              <div class="coin">
+                <div class="img"></div>
+                <div class="data">
+                  <h3>{{ newData[5].namess }}</h3>
+                  <p>{{ newData[5].short }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="searching" *ngIf="!flag && newPage">
+          <h1>
+            <a (click)="onClick()">{{ findingData.namess }}</a>
+          </h1>
+          <p>{{ findingData.short }}</p>
+        </div>
+      </div>
+      <div class="section2" *ngIf="!newPage">
+        <h1>{{ calledData.namess }}</h1>
+        <p>{{ calledData.title }}</p>
+      </div>
+    </main>
+  </body>
+</html>
